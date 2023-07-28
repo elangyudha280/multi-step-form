@@ -15,6 +15,9 @@ const FormLayout = ({children,title}) =>{
 
                 {/* sidebar */}
                  <SidebarForm/>
+
+                {/* content component */}
+                {children}
             </section>
         </main>
     )

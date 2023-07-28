@@ -16,19 +16,19 @@
 
 @layer components{
     .container-form{
-        @apply w-[800px] h-full md:h-[450px] p-0 mx-auto md:p-3 rounded-xl md:bg-white shadow-lg flex flex-col md:flex-row;
+        @apply relative w-[800px] h-full md:h-[450px] p-0 mx-auto md:p-3 rounded-xl md:bg-white shadow-lg flex flex-col md:flex-row;
     }
 
     .sidebar{
-        @apply w-full h-[200px] md:h-full md:w-[200px] md:rounded-md px-5 py-8 bg-primary-purplish-blue bg-[url('./images/bg-sidebar-mobile.svg')] md:bg-[url('./images/bg-sidebar-desktop.svg')]  bg-no-repeat bg-bottom bg-cover ;
+        @apply relative w-full h-[200px] md:h-full md:w-[200px] md:rounded-md px-5 py-8 bg-primary-purplish-blue bg-[url('./images/bg-sidebar-mobile.svg')] md:bg-[url('./images/bg-sidebar-desktop.svg')]  bg-no-repeat bg-bottom bg-cover ;
     }
 
     .content_sidebar{
-        @apply w-full h-full  z-[2] items-center justify-center gap-x-5 gap-y-1 md:gap-x-2 md:gap-y-5 flex-wrap md:justify-start md:items-start flex flex-row md:flex-col 
+        @apply relative w-full h-full  z-[2] items-center justify-center gap-x-5 gap-y-1 md:gap-x-2 md:gap-y-5 flex-wrap md:justify-start md:items-start flex flex-row md:flex-col 
     }
 
     .item-sidebar{
-        @apply w-auto md:w-full flex gap-3 z-[4]  ;
+        @apply relative w-auto md:w-full flex gap-3 z-[4]  ;
     }
 
     .nav-number{
