@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: [
     "./index.html",
@@ -9,7 +10,7 @@ export default {
       fontFamily:{
         'ubuntu':['Ubuntu', 'Arial', 'sans-serif']
       },
-      color:{
+      colors:{
         'primary':{
           'marine-blue':'hsl(213, 96%, 18%)',
           'purplish-blue':'hsl(243, 100%, 62%)',
