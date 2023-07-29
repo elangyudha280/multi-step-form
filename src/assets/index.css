@@ -10,17 +10,17 @@
 
 @layer base {
     .main_content{
-        @apply relative w-full p-0 md:px-2 h-[100vh] bg-netral-magnolia flex items-center font-ubuntu;
+        @apply relative w-full p-0 md:px-2 h-[100vh] overflow-x-hidden overflow-y-auto  bg-netral-magnolia flex items-center font-ubuntu;
     }
 }
 
 @layer components{
     .container-form{
-        @apply relative w-[800px] h-full md:h-[450px] p-0 mx-auto md:p-3 rounded-xl md:bg-white shadow-lg flex flex-col md:flex-row;
+        @apply relative w-[800px] h-full md:h-[470px] p-0 mx-auto md:p-3 rounded-xl bg-transparent md:bg-white shadow-lg flex flex-col md:flex-row;
     }
 
     .sidebar{
-        @apply relative w-full h-[200px] md:h-full md:w-[200px] md:rounded-md px-5 py-8 bg-primary-purplish-blue bg-[url('./images/bg-sidebar-mobile.svg')] md:bg-[url('./images/bg-sidebar-desktop.svg')]  bg-no-repeat bg-bottom bg-cover ;
+        @apply relative w-full h-[200px] md:h-full md:w-[240px] md:rounded-md px-5 py-8 bg-primary-purplish-blue bg-[url('./images/bg-sidebar-mobile.svg')] md:bg-[url('./images/bg-sidebar-desktop.svg')]  bg-no-repeat bg-bottom bg-cover ;
     }
 
     .content_sidebar{
@@ -33,5 +33,42 @@
 
     .nav-number{
         @apply  self-center p-0 w-[28px] text-[13px] h-[28px] flex justify-center items-center rounded-full  font-medium select-none;
+    }
+
+    .main_content_form{
+        @apply  relative w-full h-full flex flex-col;
+    }
+    .container_button_nav{
+        @apply relative w-full bg-white shadow-[0_-2px_6px_rgba(0,0,0,0.1)] md:shadow-none p-2;
+    }
+    .btn_nav_form{
+        @apply  px-2 h-[40px] w-[110px] text-[14px] font-medium rounded-[5px] bg-primary-marine-blue text-white;
+    }
+    .main_form{
+        @apply relative max-w-[500px] mx-auto  py-5 mb-2 bg-white px-5 rounded-md h-auto mt-[-40px] md:mt-0 md:h-full md:rounded-none md:px-0  md:bg-transparent;
+    }
+
+    .input-group{
+        @apply  w-full  relative flex flex-col 
+    }
+    .label-input{
+        @apply text-[13px] text-primary-marine-blue inline-block font-semibold mb-1
+    }
+    .input-item{
+        @apply w-full px-3 py-2 transition-all duration-100  border-[1px] font-medium  outline-none rounded-md focus:border-primary-marine-blue  ;
+    }
+}
+
+@media (max-height:490px) and screen(md){
+    .main_content{
+        @apply h-auto py-5
+    }
+}
+@media (max-width:768px) and (max-height:540px){
+    .main_content{
+        @apply h-auto 
+    }
+    .main_form{
+        @apply mb-5;
     }
 }

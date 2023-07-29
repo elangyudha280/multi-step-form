@@ -37,7 +37,7 @@ const SidebarForm = ()=>{
                                 </div>
                                 <div className=" flex-col hidden flex-1 md:flex w-full h-full uppercase select-none">
                                     <h4 className="step p-0 m-0 text-[10px] text-neutral-400">step {el.step}</h4>
-                                    <h2 className={`info text-[12px] m-0 p-0 text-neutral-50 font-semibold tracking-wide`}>{el.info_step}</h2>
+                                    <h2 className={`info text-[12px] m-0 p-0 text-neutral-50 font-semibold tracking-widest`}>{el.info_step}</h2>
                                 </div>
                             </div>
                             )
