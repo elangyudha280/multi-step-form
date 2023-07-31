@@ -16,7 +16,7 @@
 
 @layer components{
     .container-form{
-        @apply relative w-[800px] h-full md:h-[470px] p-0 mx-auto md:p-3 rounded-xl bg-transparent md:bg-white shadow-lg flex flex-col md:flex-row;
+        @apply relative w-[850px] h-full md:h-[470px] p-0 mx-auto md:p-3 rounded-xl bg-transparent md:bg-white shadow-lg flex flex-col md:flex-row;
     }
 
     .sidebar{
