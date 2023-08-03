@@ -33,8 +33,6 @@ const PagePersonalInfo = ()=>{
     // handle submit
     const handleSubmit = (event)=>{
         event.preventDefault()
-        // set data
-        // dispatch
         // jika data username nya tidak valid
         if(validator.isNumeric(state.username)){
             setHandleError({err:true,msg:'username harus mengandung karakter',type:'usernameError'})
@@ -46,8 +44,8 @@ const PagePersonalInfo = ()=>{
             return
         }
           // jika data phone mobile tidak valid
-        else  if(!validator.isMobilePhone(state.phoneNumber,['id-ID'])){
-            setHandleError({err:true,msg:'format number harus format indonesia',type:'NumberError'})
+        else  if(!validator.isMobilePhone(state.phoneNumber)){
+            setHandleError({err:true,msg:'format number tidak valid',type:'NumberError'})
             return
         }
 
