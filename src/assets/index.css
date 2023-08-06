@@ -42,7 +42,7 @@
         @apply relative w-full bg-white shadow-[0_-2px_6px_rgba(0,0,0,0.1)] md:shadow-none p-2;
     }
     .btn_nav_form{
-        @apply  px-2 h-[40px] w-[110px] text-[14px] font-medium rounded-[5px] bg-primary-marine-blue text-white;
+        @apply  px-2 h-[40px] w-[110px] text-[14px] font-medium rounded-[5px] capitalize text-white;
     }
     .main_form{
         @apply relative max-w-[500px] mx-auto  py-5 mb-2 bg-white px-5 rounded-md h-auto mt-[-40px] md:mt-0 md:h-full md:rounded-none md:px-0  md:bg-transparent;

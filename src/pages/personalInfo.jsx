@@ -54,7 +54,7 @@ const PagePersonalInfo = ()=>{
     }
 
     return (
-        <FormLayout title='Personal Info'>
+        <FormLayout title='Personal Info' step='1'>
             {/* content personal info */}
             <form action="" onSubmit={handleSubmit} autoComplete="off" className="w-full h-full relative">
                 <section className="main_content_form">
@@ -113,7 +113,7 @@ const PagePersonalInfo = ()=>{
                     {/* container button navigation nav */}
                     <section className="container_button_nav ">
                         <div className="mx-auto max-w-[500px] h-full  flex justify-end">
-                            <button className="btn_nav_form">
+                            <button className="btn_nav_form bg-primary-marine-blue">
                                 Next Step
                             </button>
                         </div>

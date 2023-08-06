@@ -1,6 +1,6 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 
-const SidebarForm = ()=>{
+const SidebarForm = ({stepPage})=>{
     let [activeStep,setActiveState] = useState(1)
     let step = [
       {
@@ -25,6 +25,26 @@ const SidebarForm = ()=>{
       }
   
     ]
+
+    useEffect(()=>{
+      switch (stepPage) {
+        case '1':
+          setActiveState(1)
+          return;
+          case '2':
+          setActiveState(2)
+          return;
+          case '3':
+          setActiveState(3)
+          return;
+          case '4':
+            setActiveState(4)
+            return;
+        default:
+          setActiveState(1)
+          break;
+      }
+    },[])
     return (
         <aside className="sidebar">
                     <div className="content_sidebar">
@@ -32,7 +52,7 @@ const SidebarForm = ()=>{
                         step?.map((el,i)=>{
                             return (
                             <div className="item-sidebar" key={el.id}>
-                                <div onClick={()=>{setActiveState(el.step)}} className={`nav-number cursor-pointer transition-all duration-200 ${activeStep === el.step ? 'bg-primary-light-blue text-black ' : 'bg-transparent text-white shadow-[0_0_0_1px_white]'}`}>
+                                <div className={`nav-number cursor-pointer transition-all duration-200 ${activeStep === el.step ? 'bg-primary-light-blue text-black ' : 'bg-transparent text-white shadow-[0_0_0_1px_white]'}`}>
                                 {el.step}
                                 </div>
                                 <div className=" flex-col hidden flex-1 md:flex w-full h-full uppercase select-none">

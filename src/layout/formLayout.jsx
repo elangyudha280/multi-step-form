@@ -3,7 +3,7 @@ import React,{useEffect} from "react";
 // import component
 import SidebarForm from '../component/navbar'
 
-const FormLayout = ({children,title}) =>{
+const FormLayout = ({children,title,step}) =>{
 
     useEffect(()=>{
         document.title = title
@@ -14,7 +14,7 @@ const FormLayout = ({children,title}) =>{
             <section className="container-form">
 
                 {/* sidebar */}
-                 <SidebarForm/>
+                 <SidebarForm stepPage={step}/>
 
                 {/* content component */}
                 {children}
