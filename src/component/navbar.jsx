@@ -52,7 +52,7 @@ const SidebarForm = ({stepPage})=>{
                         step?.map((el,i)=>{
                             return (
                             <div className="item-sidebar" key={el.id}>
-                                <div className={`nav-number cursor-pointer transition-all duration-200 ${activeStep === el.step ? 'bg-primary-light-blue text-black ' : 'bg-transparent text-white shadow-[0_0_0_1px_white]'}`}>
+                                <div className={`nav-number select-none transition-all duration-200 ${activeStep === el.step ? 'bg-primary-light-blue text-black ' : 'bg-transparent text-white shadow-[0_0_0_1px_white]'}`}>
                                 {el.step}
                                 </div>
                                 <div className=" flex-col hidden flex-1 md:flex w-full h-full uppercase select-none">

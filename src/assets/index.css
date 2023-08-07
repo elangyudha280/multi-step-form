@@ -60,6 +60,12 @@
     .input-item{
         @apply w-full px-3 py-2 transition-all duration-100  border-[1px] font-medium  outline-none rounded-md focus:border-primary-marine-blue  ;
     }
+    .card_plan {
+        @apply w-full flex-1 rounded-md py-1 px-3   flex flex-row md:flex-col  transition-all duration-500 shadow-[0_0_0_1px] hover:shadow-primary-marine-blue md:py-2;
+    }
+    .text-method{
+        @apply select-none text-[14px] font-semibold transition-all duration-500
+    }
 }
 
 @media (max-height:490px) and screen(md){
@@ -71,7 +77,18 @@
     .main_content{
         @apply h-auto 
     }
+    
     .main_form{
         @apply mb-5;
+    }
+}
+
+@media (max-width:301px) and (max-height:630px){
+
+    .form-select-plan{
+        @apply min-h-[500px]
+    }
+    .main_form_select_plan{
+        @apply mt-[-1em]
     }
 }

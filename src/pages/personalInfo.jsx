@@ -7,9 +7,13 @@ import validator from "validator";
 // import reduce personal info
 import reducerPersonalInfo from "../context/reducer/reducerFromPersonalInfo";
 
+import { useNavigate } from "react-router-dom";
 
+import fakeEncrytionPath from "../data/fakeEncrytionPath";
 
 const PagePersonalInfo = ()=>{
+
+    let navigate = useNavigate()
 
     // state handle data form personal info
     let [state,dispatch] = useReducer(reducerPersonalInfo,{
@@ -51,6 +55,7 @@ const PagePersonalInfo = ()=>{
 
         // jika data valid
         setHandleError({err:false,msg:'',type:''})
+        navigate(`/${fakeEncrytionPath.selectPlan}`)
     }
 
     return (

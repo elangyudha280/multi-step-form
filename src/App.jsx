@@ -7,15 +7,18 @@ import { Routes,Route } from 'react-router-dom'
 import PagePersonalInfo from './pages/personalInfo'
 import SelectPlan from './pages/selectPlan'
 
+// fake encryption path
+import fakeEncrytionPath from './data/fakeEncrytionPath'
+
 function App() {
- 
+
 
   return (
       <Routes>
         {/* router to personal info */}
         <Route path='/' element={<PagePersonalInfo/>} />
         {/* router to select your plan */}
-        <Route path='/selectPlan' element={<SelectPlan/>} />
+        <Route path={`/${fakeEncrytionPath.selectPlan}`} element={<SelectPlan/>} />
       </Routes>
   )
 }
