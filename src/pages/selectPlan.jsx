@@ -6,9 +6,12 @@ import FormLayout from "../layout/formLayout";
 // import option selec plan
 import optionSelectPlan from "../data/optionSelectplan";
 
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import fakeEncrytionPath from "../data/fakeEncrytionPath";
 
 const SelectPlan = ()=>{
+
+    let navigate = useNavigate()
 
     // state card plan active
     let [planActive,setPlanActive] = useState(1)
@@ -20,6 +23,7 @@ const SelectPlan = ()=>{
     const handleSelectPlan = (el,event)=>{
         setPlanActive(el.id)
     }
+
 
     return (
         <FormLayout title='Select Your Plan' step='2'>
@@ -93,7 +97,9 @@ const SelectPlan = ()=>{
                                 go back 
                             </Link>
                             {/* next step */}
-                            <button className="btn_nav_form bg-primary-marine-blue">
+                            <button onClick={()=>{
+                                navigate(`/${fakeEncrytionPath.addons}`)
+                            }} className="btn_nav_form bg-primary-marine-blue">
                                 Next Step
                             </button>
                         </div>

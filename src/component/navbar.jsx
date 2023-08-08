@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from "react";
 
 const SidebarForm = ({stepPage})=>{
-    let [activeStep,setActiveState] = useState(1)
+    let [activeStep,setActiveState] = useState(0)
     let step = [
       {
         id:1,
