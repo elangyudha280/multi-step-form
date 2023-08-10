@@ -48,7 +48,7 @@ const SelectPlan = ()=>{
                                             <div key={el.id} onClick={()=>{
                                                 handleSelectPlan(el)
                                             }} className={`card_plan cursor-pointer 
-                                                ${(planActive === el.id) ? 'shadow-primary-marine-blue bg-netral-magnolia' : 'shadow-netral-light-gray bg-white'}
+                                                ${(planActive === el.id) ? 'shadow-primary-marine-blue bg-netral-magnolia ' : 'shadow-netral-light-gray bg-white'}
                                             `}>
                                                 <div className="card_header w-auto pr-4  h-auto   py-2 md:px-0 md:w-full md:h-[80px]">
                                                     <img src={el.icon} className="object-center object-cover" alt="" />

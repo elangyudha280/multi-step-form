@@ -61,14 +61,14 @@
         @apply w-full px-3 py-2 transition-all duration-100  border-[1px] font-medium  outline-none rounded-md focus:border-primary-marine-blue  ;
     }
     .card_plan {
-        @apply w-full flex-1 rounded-md py-1 px-3   flex flex-row md:flex-col  transition-all duration-500 shadow-[0_0_0_1px] hover:shadow-primary-marine-blue md:py-2;
+        @apply w-full flex-1 rounded-md py-1 px-3   flex flex-row md:flex-col  transition-all duration-500 shadow-[0_0_0_1px] hover:shadow-primary-marine-blue hover:bg-netral-magnolia md:py-2;
     }
     .text-method{
         @apply select-none text-[14px] font-semibold transition-all duration-500
     }
 
     .card_add_ons{
-        @apply w-full flex gap-2 rounded-md px-5 cursor-pointer py-4  transition-all duration-500 shadow-[0_0_0_1px] hover:shadow-primary-marine-blue 
+        @apply w-full flex gap-2 rounded-md px-5 cursor-pointer py-4  transition-all duration-500 shadow-[0_0_0_1px] hover:shadow-primary-marine-blue  hover:bg-netral-magnolia
     }
 }
 

@@ -24,7 +24,7 @@ const AddOnsPage = ()=>{
                         <div className="container-add-ons w-full flex flex-col mt-4 gap-3">
                             <div className="card_add_ons shadow-netral-cool-gray">
                                 <div className="checkbox  pr-3 flex items-center justify-center">
-                                    <input type="checkbox" name="" id="" className="w-[17px] h-[17px]  accent-primary-purplish-blue " />
+                                    <input type="checkbox" name="" id="" readOnly  className="w-[17px] h-[17px]  accent-primary-purplish-blue " />
                                 </div>
                                 <div className="title_card flex-1 w-full">
                                         <h2 className="title_card_ons text-primary-marine-blue text-[16px] font-semibold">Online service</h2>
