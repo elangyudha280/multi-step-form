@@ -4,7 +4,7 @@ import React,{useState}from "react";
 import FormLayout from "../layout/formLayout";
 
 // import option selec plan
-import optionSelectPlan from "../data/optionSelectplan";
+import {optionSelectPlan} from "../data/optionSelectDataForm";
 
 import { Link,useNavigate } from "react-router-dom";
 import fakeEncrytionPath from "../data/fakeEncrytionPath";

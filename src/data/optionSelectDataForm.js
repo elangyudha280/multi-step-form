@@ -33,4 +33,6 @@ const optionSelectPlan = [
     }
 ]
 
-export default optionSelectPlan
+
+
+export  {optionSelectPlan}
