@@ -6,8 +6,7 @@ import fakeEncrytionPath from "../data/fakeEncrytionPath";
 
 import { Link } from "react-router-dom";
 
-// import option select data fomr add ons
-// import { optionPickAddOns } from "../data/optionSelectDataForm";
+
 
 const AddOnsPage = ()=>{
 
