@@ -4,12 +4,13 @@ import React, { useState } from "react";
 import FormLayout from "../layout/formLayout";
 import fakeEncrytionPath from "../data/fakeEncrytionPath";
 
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 
 
 const AddOnsPage = ()=>{
 
+    let navigate = useNavigate()
 
     const [optionPickAddOns,setOptionPickAddOns] =useState( [
         {
@@ -69,11 +70,17 @@ const AddOnsPage = ()=>{
 
     }
  
+    // handle submit form3
+    const handleSubmitData = (event) =>{
+        event.preventDefault()
+        navigate(`/${fakeEncrytionPath.finishingUp}`)
+    }
 
     return (
         <FormLayout title='addons' step='3'>
+
             <section className="main_content_form ">
-                {/* container form */}
+                     {/* container form */}
                 <section className="container_form form_add_ons flex-1 w-full h-full px-5 md:px-2">
 
                     <section className="main_form main_form_add_ons">
@@ -85,7 +92,7 @@ const AddOnsPage = ()=>{
                         </p>
 
                         <div className="container-add-ons w-full flex flex-col mt-4 gap-3">
-                           {
+                        {
                             optionPickAddOns?.map(el=>{
                                 return (
                                     <div key={el.id} onClick={handleSelect.bind(this,el)} className={`card_add_ons
@@ -105,26 +112,28 @@ const AddOnsPage = ()=>{
                                     </div>
                                 )
                             })
-                           }
+                        }
                         </div>
                     </section>
 
-                </section>
+                    </section>
 
-                   {/* container button navigation nav */}
-                   <section className="container_button_nav ">
+                    {/* container button navigation nav */}
+                    <section className="container_button_nav ">
                         <div className="mx-auto max-w-[500px] h-full  flex justify-between">
                             {/* go back  */}
                             <Link to={`/${fakeEncrytionPath.selectPlan}`} className="btn_nav_form  text-netral-cool-gray text-medium transition-all duration-100 hover:text-primary-marine-blue  grid place-items-center">
                                 go back 
                             </Link>
                             {/* next step */}
-                            <button className="btn_nav_form bg-primary-marine-blue">
+                            <button onClick={handleSubmitData} className="btn_nav_form bg-primary-marine-blue">
                                 Next Step
                             </button>
                         </div>
                     </section>
+
             </section>
+
         </FormLayout>
     )
 }

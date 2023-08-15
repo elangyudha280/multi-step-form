@@ -3,6 +3,9 @@ import React from "react";
 // import template 
 import FormLayout from "../layout/formLayout";
 
+import fakeEncrytionPath from "../data/fakeEncrytionPath";
+import { Link } from "react-router-dom";
+
 const FinishingUpPage = ()=>{
     return (
         <FormLayout title='Finishing Up' step='4'>
@@ -19,11 +22,13 @@ const FinishingUpPage = ()=>{
                         </p>
                     </section>
 
+                </section>
+                
                      {/* container button navigation nav */}
-                    <section className="container_button_nav ">
+                     <section className="container_button_nav ">
                         <div className="mx-auto max-w-[500px] h-full  flex justify-between">
                             {/* go back  */}
-                            <Link to={`/${fakeEncrytionPath.selectPlan}`} className="btn_nav_form  text-netral-cool-gray text-medium transition-all duration-100 hover:text-primary-marine-blue  grid place-items-center">
+                            <Link to={`/${fakeEncrytionPath.addons}`} className="btn_nav_form  text-netral-cool-gray text-medium transition-all duration-100 hover:text-primary-marine-blue  grid place-items-center">
                                 go back 
                             </Link>
                             {/* next step */}
@@ -32,7 +37,6 @@ const FinishingUpPage = ()=>{
                             </button>
                         </div>
                     </section>
-                </section>
               </section>
         </FormLayout>
     )
