@@ -32,8 +32,8 @@ const FinishingUpPage = ()=>{
                                 go back 
                             </Link>
                             {/* next step */}
-                            <button className="btn_nav_form bg-primary-marine-blue">
-                                Next Step
+                            <button className="btn_nav_form bg-primary-purplish-blue hover:opacity-60 transition-all duration-200">
+                                Confirm
                             </button>
                         </div>
                     </section>
