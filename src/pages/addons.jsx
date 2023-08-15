@@ -111,7 +111,6 @@ const AddOnsPage = ()=>{
 
                 </section>
 
-                {/* component nav */}
                    {/* container button navigation nav */}
                    <section className="container_button_nav ">
                         <div className="mx-auto max-w-[500px] h-full  flex justify-between">
