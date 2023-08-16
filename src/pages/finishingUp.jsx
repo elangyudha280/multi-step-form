@@ -33,7 +33,7 @@ const FinishingUpPage = ()=>{
                                             </h2>
                                     </div>
                                     {/* add ons  */}
-                                    <div className="add_ons_info mt-1 w-full flex flex-col ">
+                                    <div className="add_ons_info mt-1  overflow-x-hidden overflow-y-auto w-full flex flex-col ">
                                         <div className="py-2 w-full flex items-center">
                                             <h2 className="title_add_ons flex-1 w-full text-[13px] font-medium text-netral-cool-gray">
                                                 online service
@@ -43,6 +43,14 @@ const FinishingUpPage = ()=>{
                                             </h2>
                                         </div>
                                          <div className="py-2 w-full flex items-center">
+                                            <h2 className="title_add_ons flex-1 w-full text-[13px] font-medium text-netral-cool-gray">
+                                                larger storage
+                                            </h2>
+                                            <h2 className="price_add_ons text-[13px] font-bold text-primary-marine-blue ">
+                                            $9/mo
+                                            </h2>
+                                        </div>
+                                        <div className="py-2 w-full flex items-center">
                                             <h2 className="title_add_ons flex-1 w-full text-[13px] font-medium text-netral-cool-gray">
                                                 larger storage
                                             </h2>
