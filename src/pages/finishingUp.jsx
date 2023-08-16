@@ -20,6 +20,19 @@ const FinishingUpPage = ()=>{
                         <p className="sub_title_form text-[15px] font-medium text-netral-cool-gray">
                             double-check  everything looks OK before confirming. 
                         </p>
+
+                        <section className="container_finshing_up w-full border-2 overflow-hidden rounded-md border-red-600 mt-4">
+                                <div className="finishing_header w-full px-4 py-2 bg-netral-magnolia">
+                                    <div className="select_select_plan_info w-full flex gap-2 items-center py-4 border-b-2 border-b-neutral-200">
+                                            <h2 className="title_select_plan flex-1 w-full text-[14px] font-semibold text-primary-marine-blue">
+                                                Arcade (Monthly)
+                                            </h2>
+                                            <h2 className="price_select_plan text-[14px] font-bold text-primary-marine-blue ">
+                                            $9/mo
+                                            </h2>
+                                    </div>
+                                </div>
+                        </section>
                     </section>
 
                 </section>
