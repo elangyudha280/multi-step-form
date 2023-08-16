@@ -62,9 +62,9 @@ const PagePersonalInfo = ()=>{
         <FormLayout title='Personal Info' step='1'>
             {/* content personal info */}
             <form action="" onSubmit={handleSubmit} autoComplete="off" className="w-full h-full relative">
-                <section className="main_content_form">
+                <section className="main_content_form ">
                     {/* container form */}
-                    <section className="container_form  flex-1 w-full h-full px-5 md:px-2">
+                    <section className="container_form opacity-0 animate-show flex-1 w-full h-full px-5 md:px-2">
                         {/* current form */}
                         <div className="main_form">
                                 <h2 className="title-form text-[30px] font-bold text-primary-marine-blue">

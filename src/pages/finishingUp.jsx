@@ -11,7 +11,7 @@ const FinishingUpPage = ()=>{
         <FormLayout title='Finishing Up' step='4'>
               <section className="main_content_form ">
                 {/* container form */}
-                <section className="container_form flex-1 w-full h-full px-5 md:px-2">
+                <section className="container_form animate-show opacity-0 flex-1 w-full h-full px-5 md:px-2">
                     {/* main form4 */}
                     <section className="main_form">
                         <h2 className="title-form text-[30px] font-bold text-primary-marine-blue">

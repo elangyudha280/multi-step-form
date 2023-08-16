@@ -81,9 +81,9 @@ const AddOnsPage = ()=>{
 
             <section className="main_content_form ">
                      {/* container form */}
-                <section className="container_form form_add_ons flex-1 w-full h-full px-5 md:px-2">
+                <section className="container_form form_add_ons  animate-show opacity-0 flex-1 w-full h-full px-5 md:px-2">
 
-                    <section className="main_form main_form_add_ons">
+                    <section className="main_form main_form_add_ons ">
                         <h2 className="title-form text-[30px] font-bold text-primary-marine-blue">
                             Pick add-ons
                         </h2>

@@ -24,6 +24,15 @@ export default {
           'magnolia':'hsl(217, 100%, 97%)',
           'alabaster':'hsl(231, 100%, 99%)',
         }
+      },
+      animation:{
+          'show':'show 0.7s linear forwards'
+      },
+      keyframes: {
+        show: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        }
       }
     },
   },
