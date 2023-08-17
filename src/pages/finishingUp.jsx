@@ -4,9 +4,17 @@ import React from "react";
 import FormLayout from "../layout/formLayout";
 
 import fakeEncrytionPath from "../data/fakeEncrytionPath";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 const FinishingUpPage = ()=>{
+
+    let navigate = useNavigate()
+
+    // handle finishing up
+    const handleFinishing = ()=>{
+        navigate(`/${fakeEncrytionPath.successPage}`)
+    }
+
     return (
         <FormLayout title='Finishing Up' step='4'>
               <section className="main_content_form ">
@@ -83,7 +91,7 @@ const FinishingUpPage = ()=>{
                                 go back 
                             </Link>
                             {/* next step */}
-                            <button className="btn_nav_form bg-primary-purplish-blue hover:opacity-60 transition-all duration-200">
+                            <button onClick={handleFinishing} className="btn_nav_form bg-primary-purplish-blue hover:opacity-60 transition-all duration-200">
                                 Confirm
                             </button>
                         </div>
