@@ -8,6 +8,7 @@ import PagePersonalInfo from './pages/personalInfo'
 import SelectPlan from './pages/selectPlan'
 import AddOnsPage from './pages/addons'
 import FinishingUpPage from './pages/finishingUp'
+import SuccessPage from './pages/successPage'
 
 // fake encryption path
 import fakeEncrytionPath from './data/fakeEncrytionPath'
@@ -25,6 +26,8 @@ function App() {
         <Route path={`/${fakeEncrytionPath.addons}`} element={<AddOnsPage/>} />  
         {/* router to finishingUp page */}
         <Route path={`/${fakeEncrytionPath.finishingUp}`} element={<FinishingUpPage/>} />
+        {/* router to success page */}
+        <Route path={`/${fakeEncrytionPath.successPage}`} element={<SuccessPage/>} />
       </Routes>
   )
 }
