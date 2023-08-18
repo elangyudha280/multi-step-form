@@ -1,4 +1,4 @@
-import React,{useState,useReducer} from "react";
+import React,{useState,useReducer, useEffect} from "react";
 import FormLayout from "../layout/formLayout";
 
 // import validator
@@ -28,6 +28,25 @@ const PagePersonalInfo = ()=>{
         msg:'',
         type:'',
     })
+
+
+    useEffect(()=>{
+        // check jika data session form 1 ada set value 
+        if(sessionStorage.getItem('dataSession')){
+            let parsing = JSON.parse(sessionStorage.getItem('dataSession'))
+            
+            // set value to state form 1
+            dispatch({
+                type:'setFromSessionData',
+                payload:{
+                    username:parsing.username,
+                    email:parsing.email,
+                    phoneNumber:parsing.phoneNumber
+                }
+            })
+        }
+
+    },[])
     
     // event handle data input
     const handleInput = (actionType,data)=>{
@@ -57,7 +76,9 @@ const PagePersonalInfo = ()=>{
         setHandleError({err:false,msg:'',type:''})
 
         // set data ke session
-        
+        sessionStorage.setItem('dataSession',JSON.stringify(state))
+
+        // redirect to form select plan
         navigate(`/${fakeEncrytionPath.selectPlan}`)
     }
 
@@ -89,7 +110,9 @@ const PagePersonalInfo = ()=>{
                                                             {handleError.msg}
                                                         </span>}
                                             </div>
-                                            <input type="text" onChange={(e)=>{handleInput('setUsername',e.target.value)}} required placeholder="e.g Stepen King" id="username" className={`input-item ${handleError.err && handleError.type === 'usernameError' ? 'border-red-500' : 'border-netral-light-gray'}` } />
+                                            <input type="text" onChange={(e)=>{handleInput('setUsername',e.target.value)}} required placeholder="e.g Stepen King" id="username" className={`input-item ${handleError.err && handleError.type === 'usernameError' ? 'border-red-500' : 'border-netral-light-gray'}` } 
+                                            defaultValue={state?.username}
+                                            />
                                         </div>
                                     {/* email */}
                                     <div className="input-group mt-4">
@@ -100,7 +123,9 @@ const PagePersonalInfo = ()=>{
                                                     {handleError.msg}
                                                 </span>}
                                         </div>
-                                            <input type="email" onChange={(e)=>{handleInput('setEmail',e.target.value)}} required placeholder="e.g Stepenking@lorem.com" id="email"  className={`input-item ${handleError.err && handleError.type === 'emailError' ? 'border-red-500' : 'border-netral-light-gray'}` } />
+                                            <input type="email" onChange={(e)=>{handleInput('setEmail',e.target.value)}} required placeholder="e.g Stepenking@lorem.com" id="email"  className={`input-item ${handleError.err && handleError.type === 'emailError' ? 'border-red-500' : 'border-netral-light-gray'}` } 
+                                                         defaultValue={state?.email}
+                                            />
                                     </div>
 
                                     {/* phone number */}
@@ -112,7 +137,9 @@ const PagePersonalInfo = ()=>{
                                                         {handleError.msg}
                                                     </span>}
                                             </div>
-                                            <input type="tel" onChange={(e)=>{handleInput('phoneNumber',e.target.value)}} required placeholder="e.g +1 234 567 890" id="phoneNumber"  className={`input-item ${handleError.err && handleError.type === 'NumberError' ? 'border-red-500' : 'border-netral-light-gray'}` } />
+                                            <input type="tel" onChange={(e)=>{handleInput('phoneNumber',e.target.value)}} required placeholder="e.g +1 234 567 890" id="phoneNumber"  className={`input-item ${handleError.err && handleError.type === 'NumberError' ? 'border-red-500' : 'border-netral-light-gray'}` } 
+                                                         defaultValue={state.phoneNumber}
+                                            />
                                         </div>
                                 </div>
                         </div>

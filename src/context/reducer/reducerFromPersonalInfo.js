@@ -6,6 +6,13 @@ export default function reducerPersonalInfo(state,action){
                 return {...state,email:action.payload}
                 case 'phoneNumber':
                 return {...state,phoneNumber:action.payload}
+            case 'setFromSessionData':
+                return {
+                    ...state,
+                    username:action.payload.username,
+                    email:action.payload.email,
+                    phoneNumber:action.payload.phoneNumber
+                }
         default:
             return state
     }
