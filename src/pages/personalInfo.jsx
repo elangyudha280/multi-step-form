@@ -55,6 +55,9 @@ const PagePersonalInfo = ()=>{
 
         // jika data valid
         setHandleError({err:false,msg:'',type:''})
+
+        // set data ke session
+        
         navigate(`/${fakeEncrytionPath.selectPlan}`)
     }
 
