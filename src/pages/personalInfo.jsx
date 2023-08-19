@@ -32,8 +32,8 @@ const PagePersonalInfo = ()=>{
 
     useEffect(()=>{
         // check jika data session form 1 ada set value 
-        if(sessionStorage.getItem('dataSession')){
-            let parsing = JSON.parse(sessionStorage.getItem('dataSession'))
+        if(sessionStorage.getItem('dataSession') && JSON.parse(sessionStorage.getItem('dataSession')).personalInfo){
+            let parsing = JSON.parse(sessionStorage.getItem('dataSession')).personalInfo
             
             // set value to state form 1
             dispatch({
@@ -44,6 +44,7 @@ const PagePersonalInfo = ()=>{
                     phoneNumber:parsing.phoneNumber
                 }
             })
+            return
         }
 
     },[])
@@ -74,9 +75,13 @@ const PagePersonalInfo = ()=>{
 
         // jika data valid
         setHandleError({err:false,msg:'',type:''})
-
         // set data ke session
-        sessionStorage.setItem('dataSession',JSON.stringify(state))
+        sessionStorage.setItem('dataSession',JSON.stringify({
+            ...JSON.parse(sessionStorage.getItem('dataSession')),
+            personalInfo:{
+                ...state
+            }
+        }))
 
         // redirect to form select plan
         navigate(`/${fakeEncrytionPath.selectPlan}`)

@@ -1,4 +1,4 @@
-import React,{useState}from "react";
+import React,{useEffect, useState}from "react";
 
 // import layout
 import FormLayout from "../layout/formLayout";
@@ -19,12 +19,62 @@ const SelectPlan = ()=>{
     // state moth and yearly
     let [priceYearly,setPriceYearly] = useState(false)
 
+    // state current Data
+    let [currentDataSelectPlan,setCurrentDataSelectPlan] = useState({})
+
+    useEffect(()=>{
+       
+        // // // cek data id plan dari local storage
+        if(sessionStorage.getItem('dataSession') && JSON.parse(sessionStorage.getItem('dataSession')).selectPlan) {
+            let parse = JSON.parse(sessionStorage.getItem('dataSession')).selectPlan
+            
+            // set priceyearly 
+            setPriceYearly((parse?.price?.year) ? true : false)
+            // set active plan 
+            setPlanActive(parse?.id)
+            // set select current data
+            setCurrentDataSelectPlan(optionSelectPlan[planActive-1])
+        return
+        }
+
+        // set default current select data
+        setCurrentDataSelectPlan(optionSelectPlan[planActive-1])
+    },[])
+
+
     // event handle select plan
     const handleSelectPlan = (el,event)=>{
         setPlanActive(el.id)
+
+        // set current data
+        setCurrentDataSelectPlan(el)
     }
 
 
+
+    // event handle submit select plan
+    const handleSubmitSelectPlan = (event)=>{
+         // set data select plan
+         let dataSelectPlan = {
+            ...currentDataSelectPlan,
+            price:(!priceYearly) ? {moth:currentDataSelectPlan.price?.moth} : {year:currentDataSelectPlan.price?.year} 
+        }
+
+        // get data  session sebelumnya
+        const dataSessionAwal = JSON.parse(sessionStorage.getItem('dataSession'))
+        
+        // merge data awal session dengan data select plan
+        const mergeData = {
+            ...dataSessionAwal,
+            selectPlan: dataSelectPlan
+        }
+
+        // set merge data ke session
+        sessionStorage.setItem('dataSession',JSON.stringify(mergeData))
+
+        // navigate to form pick add ons
+        navigate(`/${fakeEncrytionPath.addons}`)
+    }
     return (
         <FormLayout title='Select Your Plan' step='2'>
 
@@ -97,9 +147,7 @@ const SelectPlan = ()=>{
                                 go back 
                             </Link>
                             {/* next step */}
-                            <button onClick={()=>{
-                                navigate(`/${fakeEncrytionPath.addons}`)
-                            }} className="btn_nav_form bg-primary-marine-blue">
+                            <button onClick={handleSubmitSelectPlan} className="btn_nav_form bg-primary-marine-blue">
                                 Next Step
                             </button>
                         </div>

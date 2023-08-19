@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect} from "react";
 
 // import layout
 import FormLayout from "../layout/formLayout";
@@ -44,6 +44,8 @@ const AddOnsPage = ()=>{
             isSelected:false
         }
     ])
+
+  
 
     let handleSelect = (data)=>{
         // get current select data
