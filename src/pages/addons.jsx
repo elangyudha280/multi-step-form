@@ -45,7 +45,9 @@ const AddOnsPage = ()=>{
         }
     ])
 
-  
+    // tate current value
+    const [currentValueAdd,setCurrentValueAdd] = useState({})
+    
 
     let handleSelect = (data)=>{
         // get current select data
@@ -68,6 +70,7 @@ const AddOnsPage = ()=>{
         
         // update Data option data
         setOptionPickAddOns(arrKosong)
+
         
 
     }
@@ -75,7 +78,15 @@ const AddOnsPage = ()=>{
     // handle submit form3
     const handleSubmitData = (event) =>{
         event.preventDefault()
-        navigate(`/${fakeEncrytionPath.finishingUp}`)
+     
+        // FILTER DATA PICK ADD ONS YG DI PILIH
+        let filterDataPickAddOns = optionPickAddOns.filter((el)=>{
+            return el.isSelected === true
+        })
+
+        console.log(filterDataPickAddOns)
+     
+        // navigate(`/${fakeEncrytionPath.finishingUp}`)
     }
 
     return (
