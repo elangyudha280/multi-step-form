@@ -22,6 +22,31 @@ const SelectPlan = ()=>{
     // state current Data
     let [currentDataSelectPlan,setCurrentDataSelectPlan] = useState({})
 
+    // check disabled button
+    let [checkDisabledButtton,setCheckDisabledButton] = useState(null)
+
+
+    function setDataSession(currentData,priceYearly){
+        let dataSelectPlan = {
+            ...currentData,
+            price:(!priceYearly) ? {moth:currentDataSelectPlan.price?.moth} : {year:currentDataSelectPlan.price?.year} 
+        }
+
+        // get data  session sebelumnya
+        const dataSessionAwal = JSON.parse(sessionStorage.getItem('dataSession'))
+        
+        // merge data awal session dengan data select plan
+        const mergeData = {
+            ...dataSessionAwal,
+            selectPlan: dataSelectPlan
+        }
+        console.log(dataSelectPlan,mergeData,priceYearly)
+
+        // set merge data ke session
+        sessionStorage.setItem('dataSession',JSON.stringify(mergeData))
+        return
+    }
+
     useEffect(()=>{
        
         // // // cek data id plan dari local storage
@@ -34,11 +59,14 @@ const SelectPlan = ()=>{
             setPlanActive(parse?.id)
             // set select current data
             setCurrentDataSelectPlan(optionSelectPlan[planActive-1])
+            // check disbaled button false
+            setCheckDisabledButton(false)
         return
         }
 
         // set default current select data
         setCurrentDataSelectPlan(optionSelectPlan[planActive-1])
+        setCheckDisabledButton(true)
     },[])
 
 
@@ -48,15 +76,9 @@ const SelectPlan = ()=>{
 
         // set current data
         setCurrentDataSelectPlan(el)
-    }
-
-
-
-    // event handle submit select plan
-    const handleSubmitSelectPlan = (event)=>{
-         // set data select plan
-         let dataSelectPlan = {
-            ...currentDataSelectPlan,
+        // set data select plan
+        let dataSelectPlan = {
+            ...el,
             price:(!priceYearly) ? {moth:currentDataSelectPlan.price?.moth} : {year:currentDataSelectPlan.price?.year} 
         }
 
@@ -71,6 +93,17 @@ const SelectPlan = ()=>{
 
         // set merge data ke session
         sessionStorage.setItem('dataSession',JSON.stringify(mergeData))
+        
+        setCheckDisabledButton(false)
+
+    }
+
+
+
+    // event handle submit select plan
+    const handleSubmitSelectPlan = (event)=>{
+        // fungsi set data session 
+        setDataSession(currentDataSelectPlan,priceYearly)
 
         // navigate to form pick add ons
         navigate(`/${fakeEncrytionPath.addons}`)
@@ -96,6 +129,7 @@ const SelectPlan = ()=>{
                                     optionSelectPlan.map(el=>{
                                         return (
                                             <div key={el.id} onClick={()=>{
+                                                
                                                 handleSelectPlan(el)
                                             }} className={`card_plan cursor-pointer 
                                                 ${(planActive === el.id) ? 'shadow-primary-marine-blue bg-netral-magnolia ' : 'shadow-netral-light-gray bg-white'}
@@ -125,7 +159,7 @@ const SelectPlan = ()=>{
                                     `}>Mothly</p>
                                     {/* checked */}
                                     <div onClick={()=>{
-                                        setPriceYearly(priceYearly ? false : true)
+                                        setPriceYearly((state => !state ? true : false))
                                     }} className="checked cursor-pointer w-[40px] p-1 rounded-xl bg-primary-marine-blue">
                                         <div className={`circle w-[12px] h-[12px] rounded-full bg-white transition-all duration-500
                                             ${priceYearly ? 'translate-x-[160%]' : 'translate-x-[0%]'}
@@ -147,7 +181,7 @@ const SelectPlan = ()=>{
                                 go back 
                             </Link>
                             {/* next step */}
-                            <button onClick={handleSubmitSelectPlan} className="btn_nav_form bg-primary-marine-blue">
+                            <button onClick={handleSubmitSelectPlan} disabled={checkDisabledButtton} className={`btn_nav_form bg-primary-marine-blue transition-all duration-300 ${checkDisabledButtton ? 'opacity-[0.7]' : 'opacity-1'}`}>
                                 Next Step
                             </button>
                         </div>

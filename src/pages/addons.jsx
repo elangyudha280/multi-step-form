@@ -49,6 +49,14 @@ const AddOnsPage = ()=>{
     const [currentValueAdd,setCurrentValueAdd] = useState({})
     
 
+    useEffect(()=>{
+        // check jika data pick add ons nya udh ada || udh di piilh maka set option active
+        if(sessionStorage.getItem('dataSession') && JSON.parse(sessionStorage.getItem('dataSession')).pickAddOns ){
+            let parse = JSON.parse(sessionStorage.getItem('dataSession')).pickAddOns
+           
+        }
+    },[])
+
     let handleSelect = (data)=>{
         // get current select data
         let getCurrentDataSelect = optionPickAddOns.find((el)=>{
@@ -84,8 +92,20 @@ const AddOnsPage = ()=>{
             return el.isSelected === true
         })
 
-        console.log(filterDataPickAddOns)
-     
+        // console.log(filterDataPickAddOns)
+        
+        // initial data session
+        let initialSession = JSON.parse(sessionStorage.getItem('dataSession'))
+
+        // new data
+        let newData = {
+            ...initialSession,
+            pickAddOns:filterDataPickAddOns
+        }
+
+        // set data cookies
+        sessionStorage.setItem('dataSession',JSON.stringify(newData))
+        console.log(JSON.parse(sessionStorage.getItem('dataSession')));
         // navigate(`/${fakeEncrytionPath.finishingUp}`)
     }
 

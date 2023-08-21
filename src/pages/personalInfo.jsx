@@ -153,7 +153,7 @@ const PagePersonalInfo = ()=>{
                     {/* container button navigation nav */}
                     <section className="container_button_nav ">
                         <div className="mx-auto max-w-[500px] h-full  flex justify-end">
-                            <button className="btn_nav_form bg-primary-marine-blue">
+                            <button  className="btn_nav_form bg-primary-marine-blue">
                                 Next Step
                             </button>
                         </div>
