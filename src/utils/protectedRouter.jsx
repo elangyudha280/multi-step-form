@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Navigate,Outlet } from "react-router-dom";
+import fakeEncrytionPath from "../data/fakeEncrytionPath";
 
 const ProtectedFinishingUp = ()=>{
 
@@ -15,4 +16,11 @@ const ProtectedFinishingUp = ()=>{
 
 }
 
-export {ProtectedFinishingUp}
+const ProtectedSuccessPage = ()=>{
+    if(!sessionStorage.getItem('success')){
+        return <Navigate  to={`/`} />
+    }
+    return <Outlet/>
+}
+
+export {ProtectedFinishingUp,ProtectedSuccessPage}

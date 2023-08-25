@@ -27,7 +27,11 @@ const FinishingUpPage = ()=>{
 
     // handle finishing up
     const handleFinishing = ()=>{
+        
         navigate(`/${fakeEncrytionPath.successPage}`)
+        sessionStorage.setItem('success',true)
+        // clear session
+        sessionStorage.removeItem('dataSession')
     }
 
   

@@ -14,7 +14,7 @@ import SuccessPage from './pages/successPage'
 import fakeEncrytionPath from './data/fakeEncrytionPath'
 
 // protectecd function
-import { ProtectedFinishingUp } from './utils/protectedRouter'
+import { ProtectedFinishingUp,ProtectedSuccessPage} from './utils/protectedRouter'
 
 function App() {
 
@@ -32,7 +32,9 @@ function App() {
           <Route path='' element={<FinishingUpPage/>}/>
         </Route>
         {/* router to success page */}
-        <Route path={`/${fakeEncrytionPath.successPage}`} element={<SuccessPage/>} />
+        <Route path={`/${fakeEncrytionPath.successPage}`} element={<ProtectedSuccessPage/>} >
+        <Route path='' element={<SuccessPage/>}/>
+        </Route>
       </Routes>
   )
 }
