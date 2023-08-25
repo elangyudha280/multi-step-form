@@ -13,6 +13,9 @@ import SuccessPage from './pages/successPage'
 // fake encryption path
 import fakeEncrytionPath from './data/fakeEncrytionPath'
 
+// protectecd function
+import { ProtectedFinishingUp } from './utils/protectedRouter'
+
 function App() {
 
 
@@ -25,7 +28,9 @@ function App() {
         {/* router to addons page */}
         <Route path={`/${fakeEncrytionPath.addons}`} element={<AddOnsPage/>} />  
         {/* router to finishingUp page */}
-        <Route path={`/${fakeEncrytionPath.finishingUp}`} element={<FinishingUpPage/>} />
+        <Route path={`/${fakeEncrytionPath.finishingUp}`} element={<ProtectedFinishingUp/>} >
+          <Route path='' element={<FinishingUpPage/>}/>
+        </Route>
         {/* router to success page */}
         <Route path={`/${fakeEncrytionPath.successPage}`} element={<SuccessPage/>} />
       </Routes>
