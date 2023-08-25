@@ -1,4 +1,4 @@
-import React,{useState,useEffect}from "react";
+import React,{useState,useEffect,Fragment}from "react";
 
 // import template 
 import FormLayout from "../layout/formLayout";
@@ -10,10 +10,25 @@ const FinishingUpPage = ()=>{
 
     let navigate = useNavigate()
 
+    let [dataFinishingUp,setDataFinishingUp] = useState({})
+
+
     // handle finishing up
     const handleFinishing = ()=>{
         navigate(`/${fakeEncrytionPath.successPage}`)
     }
+
+    useEffect(()=>{
+
+        // check data session
+        if(sessionStorage.getItem('dataSession') && JSON.parse(sessionStorage.getItem('dataSession')).personalInfo && JSON.parse(sessionStorage.getItem('dataSession')).selectPlan){
+            let parse =JSON.parse(sessionStorage.getItem('dataSession'))
+            // set data finishing
+            setDataFinishingUp(parse)
+            console.log(parse)
+        }
+
+    },[])
 
     return (
         <FormLayout title='Finishing Up' step='4'>
@@ -30,7 +45,12 @@ const FinishingUpPage = ()=>{
                         </p>
 
                         <section className="container_finshing_up w-full  overflow-hidden   mt-4">
-                                <div className="finishing_header w-full px-4 py-2 bg-netral-magnolia rounded-md">
+                               {/* show data user */}
+                               {
+                                    dataFinishingUp?.map((el,i) =>{
+                                        return (
+                                            <Fragment key={i}>
+                                                     <div className="finishing_header w-full px-4 py-2 bg-netral-magnolia rounded-md">
                                     {/* select plan */}
                                     <div className="select_select_plan_info w-full flex gap-2 items-center py-4 border-b-2 border-b-neutral-200">
                                             <h2 className="title_select_plan flex-1 w-full text-[14px] font-semibold text-primary-marine-blue">
@@ -69,15 +89,19 @@ const FinishingUpPage = ()=>{
                                         
                                         
                                     </div>
-                                </div>
-                                <div className="finishin_body w-full flex items-center px-4 py-3 ">
-                                    <h2 className="title_total_price flex-1 w-full text-[16px] font-medium text-netral-cool-gray">
-                                        Total
-                                    </h2>
-                                    <h2 className="total_price text-[20px] truncate font-bold text-primary-purplish-blue">
-                                        +$12 
-                                    </h2>
-                                </div>
+                                                </div>
+                                                <div className="finishin_body w-full flex items-center px-4 py-3 ">
+                                                    <h2 className="title_total_price flex-1 w-full text-[16px] font-medium text-netral-cool-gray">
+                                                        Total
+                                                    </h2>
+                                                    <h2 className="total_price text-[20px] truncate font-bold text-primary-purplish-blue">
+                                                        +$12 
+                                                    </h2>
+                                                </div>
+                                            </Fragment>
+                                        )
+                                    })
+                               }
                         </section>
                     </section>
 
