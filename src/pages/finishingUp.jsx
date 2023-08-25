@@ -5,30 +5,32 @@ import FormLayout from "../layout/formLayout";
 
 import fakeEncrytionPath from "../data/fakeEncrytionPath";
 import { Link,useNavigate } from "react-router-dom";
+import CardFinishingUp from "../component/card";
 
 const FinishingUpPage = ()=>{
 
     let navigate = useNavigate()
 
-    let [dataFinishingUp,setDataFinishingUp] = useState({})
+    let [dataFinishingUp,setDataFinishingUp] = useState([])
 
+    useEffect(()=>{
+
+        // check data session
+        if(sessionStorage.getItem('dataSession') && JSON.parse(sessionStorage.getItem('dataSession')).personalInfo && JSON.parse(sessionStorage.getItem('dataSession')).selectPlan){
+            let parse = JSON.parse(sessionStorage.getItem('dataSession'))
+            // set data finishing
+            setDataFinishingUp([parse])
+            return
+        }
+
+    },[])
 
     // handle finishing up
     const handleFinishing = ()=>{
         navigate(`/${fakeEncrytionPath.successPage}`)
     }
 
-    useEffect(()=>{
-
-        // check data session
-        if(sessionStorage.getItem('dataSession') && JSON.parse(sessionStorage.getItem('dataSession')).personalInfo && JSON.parse(sessionStorage.getItem('dataSession')).selectPlan){
-            let parse =JSON.parse(sessionStorage.getItem('dataSession'))
-            // set data finishing
-            setDataFinishingUp(parse)
-            console.log(parse)
-        }
-
-    },[])
+  
 
     return (
         <FormLayout title='Finishing Up' step='4'>
@@ -47,60 +49,14 @@ const FinishingUpPage = ()=>{
                         <section className="container_finshing_up w-full  overflow-hidden   mt-4">
                                {/* show data user */}
                                {
-                                    dataFinishingUp?.map((el,i) =>{
-                                        return (
-                                            <Fragment key={i}>
-                                                     <div className="finishing_header w-full px-4 py-2 bg-netral-magnolia rounded-md">
-                                    {/* select plan */}
-                                    <div className="select_select_plan_info w-full flex gap-2 items-center py-4 border-b-2 border-b-neutral-200">
-                                            <h2 className="title_select_plan flex-1 w-full text-[14px] font-semibold text-primary-marine-blue">
-                                                Arcade (Monthly)
-                                            </h2>
-                                            <h2 className="price_select_plan text-[14px] font-bold text-primary-marine-blue ">
-                                            $9/mo
-                                            </h2>
-                                    </div>
-                                    {/* add ons  */}
-                                    <div className="add_ons_info mt-1  overflow-x-hidden overflow-y-auto w-full flex flex-col ">
-                                        <div className="py-2 w-full flex items-center">
-                                            <h2 className="title_add_ons flex-1 w-full text-[13px] font-medium text-netral-cool-gray">
-                                                online service
-                                            </h2>
-                                            <h2 className="price_add_ons text-[13px] font-bold text-primary-marine-blue ">
-                                            $9/mo
-                                            </h2>
-                                        </div>
-                                         <div className="py-2 w-full flex items-center">
-                                            <h2 className="title_add_ons flex-1 w-full text-[13px] font-medium text-netral-cool-gray">
-                                                larger storage
-                                            </h2>
-                                            <h2 className="price_add_ons text-[13px] font-bold text-primary-marine-blue ">
-                                            $9/mo
-                                            </h2>
-                                        </div>
-                                        <div className="py-2 w-full flex items-center">
-                                            <h2 className="title_add_ons flex-1 w-full text-[13px] font-medium text-netral-cool-gray">
-                                                larger storage
-                                            </h2>
-                                            <h2 className="price_add_ons text-[13px] font-bold text-primary-marine-blue ">
-                                            $9/mo
-                                            </h2>
-                                        </div>
-                                        
-                                        
-                                    </div>
-                                                </div>
-                                                <div className="finishin_body w-full flex items-center px-4 py-3 ">
-                                                    <h2 className="title_total_price flex-1 w-full text-[16px] font-medium text-netral-cool-gray">
-                                                        Total
-                                                    </h2>
-                                                    <h2 className="total_price text-[20px] truncate font-bold text-primary-purplish-blue">
-                                                        +$12 
-                                                    </h2>
-                                                </div>
-                                            </Fragment>
-                                        )
-                                    })
+                                (dataFinishingUp.length !== 0) &&  dataFinishingUp?.map((el,i) =>{
+                                    return (
+                                        <Fragment key={i}>
+                                                 <CardFinishingUp selectPlan={el.selectPlan} pickAddOns={el.pickAddOns}/>
+                                        </Fragment>
+                                    )
+                                })
+                                
                                }
                         </section>
                     </section>
