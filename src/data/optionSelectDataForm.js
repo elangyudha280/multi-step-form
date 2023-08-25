@@ -34,5 +34,39 @@ const optionSelectPlan = [
 ]
 
 
+const optionAddOns =  [
+    {
+        id:1,
+        title:'Online service',
+        description:'Access to multiplayer game',
+        price:{
+            moth:1,
+            year:10
+        },
+        isSelected:false
+    },
+    {
+        id:2,
+        title:'Large storage',
+        description:'Extra 1TB of cloud save',
+        price:{
+            moth:2,
+            year:20
+        },
+        isSelected:false
+    },
+    {
+        id:3,
+        title:'Customizable Profile',
+        description:'Custom theme on your profile',
+        price:{
+            moth:1,
+            year:10
+        },
+        isSelected:false
+    }
+]
 
-export  {optionSelectPlan}
+
+
+export  {optionSelectPlan,optionAddOns}

@@ -3,6 +3,7 @@ import React, { useState,useEffect} from "react";
 // import layout
 import FormLayout from "../layout/formLayout";
 import fakeEncrytionPath from "../data/fakeEncrytionPath";
+import { optionAddOns } from "../data/optionSelectDataForm";
 
 import { Link,useNavigate } from "react-router-dom";
 
@@ -12,52 +13,62 @@ const AddOnsPage = ()=>{
 
     let navigate = useNavigate()
 
-    const [optionPickAddOns,setOptionPickAddOns] =useState( [
-        {
-            id:1,
-            title:'Online service',
-            description:'Access to multiplayer game',
-            price:{
-                moth:1,
-                year:10
-            },
-            isSelected:false
-        },
-        {
-            id:2,
-            title:'Large storage',
-            description:'Extra 1TB of cloud save',
-            price:{
-                moth:2,
-                year:20
-            },
-            isSelected:false
-        },
-        {
-            id:3,
-            title:'Customizable Profile',
-            description:'Custom theme on your profile',
-            price:{
-                moth:1,
-                year:10
-            },
-            isSelected:false
-        }
-    ])
+    const [optionPickAddOns,setOptionPickAddOns] =useState(optionAddOns)
 
-    // tate current value
-    const [currentValueAdd,setCurrentValueAdd] = useState({})
+    // state check disabled button
+    const [checkDisabledButtton,setCheckDisabledButton] = useState(null)
     
 
     useEffect(()=>{
-        // check jika data pick add ons nya udh ada || udh di piilh maka set option active
-        if(sessionStorage.getItem('dataSession') && JSON.parse(sessionStorage.getItem('dataSession')).pickAddOns ){
+        // check jika data pick add ons nya udh ada || udh di piilh maka set option active dan  data pickaddons di session  tidak kosong
+        if(sessionStorage.getItem('dataSession') && JSON.parse(sessionStorage.getItem('dataSession')).pickAddOns && JSON.parse(sessionStorage.getItem('dataSession')).pickAddOns?.length  !== 0 ){
             let parse = JSON.parse(sessionStorage.getItem('dataSession')).pickAddOns
-           
+            setCheckDisabledButton(false)
+            //  filter data selain dari pick add ons yang di pilih
+            let fillter = optionPickAddOns.filter((el,index,self) =>{
+                return !parse.some(item2 => item2.id === el.id)
+            })
+            
+
+            // set data to optionPickAddOns
+            let dummyArray = [...fillter]
+            // atur posisi element selected sesuai posisinya
+            parse?.forEach(element => {
+                dummyArray.splice(element.id-1,0,element)
+            });
+
+            setOptionPickAddOns(dummyArray)
+            return
         }
+
+        // jika ada tapi kosong hapus property pickAddOns di datasession
+        if(sessionStorage.getItem('dataSession')){
+            let parse = JSON.parse(sessionStorage.getItem('dataSession'))
+
+        // hapus property
+         delete parse.pickAddOns
+        // update session storage
+        sessionStorage.setItem('dataSession',JSON.stringify(parse)) 
+        }
+
+        // set default value ke optionPickAddOns
+        setOptionPickAddOns(optionAddOns)
+        // set check button disabled
+        setCheckDisabledButton(true)
     },[])
 
+    useEffect(()=>{
+        let dataCheck = optionPickAddOns.some(el => el.isSelected === true)
+        if(dataCheck){
+            setCheckDisabledButton(false)
+            return
+        }
+        setCheckDisabledButton(true)
+    },[optionPickAddOns])
+
     let handleSelect = (data)=>{
+    
+ 
         // get current select data
         let getCurrentDataSelect = optionPickAddOns.find((el)=>{
             return el.id == data.id
@@ -78,6 +89,26 @@ const AddOnsPage = ()=>{
         
         // update Data option data
         setOptionPickAddOns(arrKosong)
+ 
+
+          // FILTER DATA PICK ADD ONS YG DI PILIH
+          let filterDataPickAddOns = arrKosong.filter((el)=>{
+            return el.isSelected === true
+        })
+
+        
+        // initial data session
+        let initialSession = JSON.parse(sessionStorage.getItem('dataSession'))
+
+        // new data
+        let newData = {
+            ...initialSession,
+            pickAddOns:filterDataPickAddOns
+        }
+
+       
+        // set data ke session
+        sessionStorage.setItem('dataSession',JSON.stringify(newData))
 
         
 
@@ -92,8 +123,6 @@ const AddOnsPage = ()=>{
             return el.isSelected === true
         })
 
-        // console.log(filterDataPickAddOns)
-        
         // initial data session
         let initialSession = JSON.parse(sessionStorage.getItem('dataSession'))
 
@@ -105,8 +134,7 @@ const AddOnsPage = ()=>{
 
         // set data cookies
         sessionStorage.setItem('dataSession',JSON.stringify(newData))
-        console.log(JSON.parse(sessionStorage.getItem('dataSession')));
-        // navigate(`/${fakeEncrytionPath.finishingUp}`)
+        navigate(`/${fakeEncrytionPath.finishingUp}`)
     }
 
     return (
@@ -159,7 +187,7 @@ const AddOnsPage = ()=>{
                                 go back 
                             </Link>
                             {/* next step */}
-                            <button onClick={handleSubmitData} className="btn_nav_form bg-primary-marine-blue">
+                            <button onClick={handleSubmitData} disabled={checkDisabledButtton ? true : false} className={`btn_nav_form bg-primary-marine-blue ${checkDisabledButtton ? 'opacity-[0.7]' : 'opacity-1'}`}>
                                 Next Step
                             </button>
                         </div>

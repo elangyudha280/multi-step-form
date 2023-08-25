@@ -23,7 +23,6 @@ const SelectPlan = ()=>{
     let [currentDataSelectPlan,setCurrentDataSelectPlan] = useState({})
 
     // check disabled button
-    let [checkDisabledButtton,setCheckDisabledButton] = useState(null)
 
 
     function setDataSession(currentData,priceYearly){
@@ -40,7 +39,6 @@ const SelectPlan = ()=>{
             ...dataSessionAwal,
             selectPlan: dataSelectPlan
         }
-        console.log(dataSelectPlan,mergeData,priceYearly)
 
         // set merge data ke session
         sessionStorage.setItem('dataSession',JSON.stringify(mergeData))
@@ -59,14 +57,11 @@ const SelectPlan = ()=>{
             setPlanActive(parse?.id)
             // set select current data
             setCurrentDataSelectPlan(optionSelectPlan[planActive-1])
-            // check disbaled button false
-            setCheckDisabledButton(false)
         return
         }
 
         // set default current select data
         setCurrentDataSelectPlan(optionSelectPlan[planActive-1])
-        setCheckDisabledButton(true)
     },[])
 
 
@@ -94,7 +89,6 @@ const SelectPlan = ()=>{
         // set merge data ke session
         sessionStorage.setItem('dataSession',JSON.stringify(mergeData))
         
-        setCheckDisabledButton(false)
 
     }
 
@@ -120,7 +114,7 @@ const SelectPlan = ()=>{
                             Select your plan
                         </h2>
                         <p className="sub_title_form text-[15px] font-medium text-netral-cool-gray">
-                            You have the option of monthly or yearly billing. 
+                            You have the option of monthly or yearly billing. git add 
                         </p>
 
                         {/* choose the plan */}
@@ -181,7 +175,7 @@ const SelectPlan = ()=>{
                                 go back 
                             </Link>
                             {/* next step */}
-                            <button onClick={handleSubmitSelectPlan} disabled={checkDisabledButtton} className={`btn_nav_form bg-primary-marine-blue transition-all duration-300 ${checkDisabledButtton ? 'opacity-[0.7]' : 'opacity-1'}`}>
+                            <button onClick={handleSubmitSelectPlan}  className={`btn_nav_form bg-primary-marine-blue transition-all duration-300 `}>
                                 Next Step
                             </button>
                         </div>
