@@ -9,6 +9,7 @@ import SelectPlan from './pages/selectPlan'
 import AddOnsPage from './pages/addons'
 import FinishingUpPage from './pages/finishingUp'
 import SuccessPage from './pages/successPage'
+import PageNotFound from './pages/notfound'
 
 // fake encryption path
 import fakeEncrytionPath from './data/fakeEncrytionPath'
@@ -35,6 +36,9 @@ function App() {
         <Route path={`/${fakeEncrytionPath.successPage}`} element={<ProtectedSuccessPage/>} >
         <Route path='' element={<SuccessPage/>}/>
         </Route>
+
+        {/* page not found  */}
+        <Route path='*' element={<PageNotFound/>} />
       </Routes>
   )
 }
